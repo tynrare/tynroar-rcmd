@@ -8,6 +8,14 @@ typedef enum { MODE_INITIAL, MODE_CONSOLE } MODE;
 #define CONSOLE_HEIGHT          10
 #define CONSOLE_LINE_HEIGHT     20
 #define CONSOLE_MAX_CHARS       20
+
+int cmd(char *command) {
+    if (strcmp(command, "exit") == 0) 
+    {
+        CloseWindow();
+    }
+}
+
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
@@ -82,6 +90,8 @@ int main(void)
             }
             
             if (IsKeyPressed(KEY_ENTER)) {
+                cmd(inputstring);
+                
                 strcpy(inputcommand, inputstring);
                 inputstring[0] = '\0';
                 inputlength = 0;
